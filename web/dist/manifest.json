@@ -1,0 +1,4 @@
+{
+  "app.js": "/app.bundle.js",
+  "chunk-vendors.js": "/chunk-vendors.bundle.js"
+}

@@ -1,0 +1,65 @@
+{
+  "name": "craft3-webpack5-tailwind2-boilerplate",
+  "description": "A real-world boilerplate for Craft CMS 3 projects that leverages Wepback 5, Tailwind 2, PostCSS 8, and has a hot-reload dev environment.",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "keywords": [
+    "craft cms",
+    "craft cms 3",
+    "webpack",
+    "webpack 5",
+    "tailwind",
+    "tailwind 2",
+    "postcss 8",
+    "babel",
+    "hmr"
+  ],
+  "maintainers": [
+    {
+      "name": "Tammy Shipps",
+      "email": "mizziness@gmail.com",
+      "web": "https://www.atomicpink.com"
+    }
+  ],
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack serve --watch --config wpconfig/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config wpconfig/webpack.prod.js",
+    "clean": "./craft clear-caches/all && ./craft cache/flush-all"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.2.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^5.0.0",
+    "css-minimizer-webpack-plugin": "^1.1.5",
+    "fibers": "^5.0.0",
+    "html-webpack-plugin": "^5.0.0-alpha.7",
+    "mini-css-extract-plugin": "^1.0.0",
+    "postcss-import": "^13.0.0",
+    "postcss-loader": "^4.0.4",
+    "postcss-preset-env": "^6.7.0",
+    "sass": "^1.30.0",
+    "sass-loader": "^10.0.3",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.1.3",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-manifest-plugin": "^3.0.0",
+    "webpack-merge": "^5.2.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.0.4",
+    "postcss": "^8.1.14",
+    "tailwindcss": "^2.0.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
