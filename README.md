@@ -55,6 +55,7 @@ Then install our other packages and run the HMR development server:
 $ yarn install
 $ yarn dev
 ```
+(I use `yarn` for my project, but you don't need to - use the tool of your choice.)
 
 Webpack assets are set up to serve from `localhost:8080` by default. 
 
@@ -65,6 +66,13 @@ You can include your chunked/hashed assets in Craft CMS templates by using [Twig
 {{ craft.twigpack.includeJsModule("app.js", true, {"type": "module"}) }}
 {{ craft.twigpack.includeJsModule("chunk-vendors.js", true) }}
 ```
+### Make it Yours
+
+This project comes pre-configured out of the box to work with Craft CMS templates, but there are plenty of ways you can customize the way this works to suit your own needs.  It tries to make no assumptions about your toolkit, other than the minimum required configuration to work with the tools included.
+
+- Tailwind has been set up with with a default configuration, and I highly suggest modifying it for your project. (You can overwrite it with an existing `tailwind.config.js` file, if you have one, to import all your custom styling quickly.)
+- devServer options can be changed and extended as needed - for example, by default auto `open` for the served url is turned off, but if you're using a custom generated template, then you might want it on, instead.
+- Go to town! Fork it and have at it :)
 
 ### Scripts
 
