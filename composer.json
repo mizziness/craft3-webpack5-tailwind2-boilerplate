@@ -1,6 +1,8 @@
 {
   "require": {
+    "chasegiunta/scss": "^1.0",
     "craftcms/cms": "^3.5.10",
+    "nystudio107/craft-twigpack": "^1.2",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "require-dev": {
