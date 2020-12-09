@@ -5,6 +5,9 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+// Uncomment to enable Webpackbar
+// const WebpackBar = require('webpackbar');
+
 module.exports = {
   entry: {
     app: [paths.src + '/app.js']
@@ -17,11 +20,14 @@ module.exports = {
   },
 
   plugins: [
-    // Clean up after ourselves 
+    // Clean up after ourselves
     new CleanWebpackPlugin(),
 
     // Generates a manifest.json file for use in Craft CMS with Twigpack
     new WebpackManifestPlugin(),
+
+    // Uncomment to enable Webpackbar
+    // new WebpackBar(),
 
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
@@ -46,7 +52,14 @@ module.exports = {
         test: /\.(scss|css)$/,
         use: [
           'style-loader',
-          { loader: 'css-loader', options: {sourceMap: true, importLoaders: 1} },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 1,
+              url: false // Set to true to allow css-loader to resolve urls
+            }
+          },
           { loader: 'postcss-loader', options: {sourceMap: true} },
           { loader: 'sass-loader', options: {sourceMap: true} },
         ],
