@@ -55,7 +55,7 @@ module.exports = merge(common, {
     name: 'chunk-vendors',
   },
   minimize: true,
-  minimizer: [new CssMinimizerPlugin(), "..."],
+  minimizer: [new CssMinimizerPlugin()],
   },
   performance: {
     hints: false,

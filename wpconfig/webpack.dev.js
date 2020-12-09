@@ -3,7 +3,6 @@ const paths = require('./paths')
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = merge(common, {
@@ -17,12 +16,12 @@ module.exports = merge(common, {
     historyApiFallback: true,
     contentBase: [paths.src, paths.build, paths.templates],
     watchContentBase: true,
-    open: false,
-    compress: true,
+    open: false, // Set to true to auto-open the asset url
+    compress: true, // Enable local gzip compression
     hot: true,
     port: 8080,
     host: 'localhost',
-    writeToDisk: true,
+    writeToDisk: true, // Allow creation of new files
     disableHostCheck: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
@@ -30,6 +29,10 @@ module.exports = merge(common, {
   plugins: [
     // Yummy Hot Reloading in development only
     new webpack.HotModuleReplacementPlugin(),
+    // Include template files for watching
+    new WatchExternalFilesPlugin({
+      files: [ '../templates/**/*.twig' ]
+    }),
   ],
 
   // Creates our chunk-vendors file
