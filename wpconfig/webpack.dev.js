@@ -29,10 +29,6 @@ module.exports = merge(common, {
   plugins: [
     // Yummy Hot Reloading in development only
     new webpack.HotModuleReplacementPlugin(),
-    // Include template files for watching
-    new WatchExternalFilesPlugin({
-      files: [ '../templates/**/*.twig' ]
-    }),
   ],
 
   // Creates our chunk-vendors file
