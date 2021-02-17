@@ -23,8 +23,8 @@
     }
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack serve --watch --config ./wpconfig/webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config ./wpconfig/webpack.prod.js",
+    "dev": "cross-env NODE_ENV=development webpack serve --mode development --config ./wpconfig/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --mode production --config ./wpconfig/webpack.prod.js",
     "clean": "./craft clear-caches/all && ./craft cache/flush-all"
   },
   "devDependencies": {
