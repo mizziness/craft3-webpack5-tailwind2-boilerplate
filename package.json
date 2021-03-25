@@ -1,7 +1,7 @@
 {
   "name": "craft3-webpack5-tailwind2-boilerplate",
   "description": "A real-world boilerplate for Craft CMS 3 projects that leverages Wepback 5, Tailwind 2, PostCSS 8, and has a hot-reload dev environment.",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "main": "app.js",
   "license": "MIT",
   "keywords": [
@@ -46,11 +46,12 @@
     "sass": "^1.30.0",
     "sass-loader": "^10.0.3",
     "style-loader": "^2.0.0",
-    "webpack": "^5.10.0",
+    "webpack": "^5.10",
     "webpack-cli": "^4.0.0",
-    "webpack-dev-server": "^3.11.0",
+    "webpack-dev-server": "^3.11.2",
     "webpack-manifest-plugin": "^3.0.0",
-    "webpack-merge": "^5.2.0"
+    "webpack-merge": "^5.2.0",
+    "webpack-watch-files-plugin": "^1.1.0"
   },
   "dependencies": {
     "autoprefixer": "^10.0.4",

@@ -39,10 +39,11 @@ A real-world boilerplate for Craft CMS 3 projects that leverages Wepback 5, Tail
 * [`html-webpack-plugin`](https://github.com/jantimon/html-webpack-plugin) - Generate HTML files from template
 * [`mini-css-extract-plugin`](https://github.com/webpack-contrib/mini-css-extract-plugin) - Extract CSS into separate files
 * [`css-minimizer-webpack-plugin`](https://webpack.js.org/plugins/css-minimizer-webpack-plugin/) - Optimize and minimize CSS assets
+* [`webpack-watch-files-plugin`](https://github.com/Fridus/webpack-watch-files-plugin) - Watch changes in files for live template reloading
 
 ### Get Started
 
-First, finish up installing Craft CMS locally for your development environment:
+First, finish up installing Craft CMS locally for your development environment. There is a temporary license key included by default to prevent an error during installation. It will get overwritten by a new one:
 
 ```
 $ composer install
@@ -57,7 +58,9 @@ $ yarn dev
 ```
 (I use `yarn` for my project, but you don't need to - use the tool of your choice.)
 
-Webpack assets are set up to serve from `localhost:8080` by default.
+Webpack assets are set up to serve from `localhost:8080` by default.  
+
+*Note:* The URL "http://localhost:8080" won't show anything by default, but you can check http://localhost:8080/app.bundle.js to make sure things are running.  If you prefer to have a page load, though, you can edit `wpconfig/webpack.common.js` and uncomment the `new HtmlWebpackPlugin` code block. This will generate an `index.html` file along with your assets.
 
 You can include your chunked/hashed assets in Craft CMS templates by using [Twigpack](https://nystudio107.com/docs/twigpack/)'s features:
 
