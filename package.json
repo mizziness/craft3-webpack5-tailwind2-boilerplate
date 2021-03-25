@@ -1,7 +1,7 @@
 {
   "name": "craft3-webpack5-tailwind2-boilerplate",
   "description": "A real-world boilerplate for Craft CMS 3 projects that leverages Wepback 5, Tailwind 2, PostCSS 8, and has a hot-reload dev environment.",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "main": "app.js",
   "license": "MIT",
   "keywords": [

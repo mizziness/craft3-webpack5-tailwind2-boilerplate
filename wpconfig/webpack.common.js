@@ -45,11 +45,10 @@ module.exports = {
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
     // Uncomment this if you want to generate an html template file
-    // Use this if you really want http://localhost:8080/ to serve *something*. 
+    // Use this if you really want http://localhost:8080/ to serve *something*.
     //
     // new HtmlWebpackPlugin({
     //   title: 'Webpack 5 Boilerplate',
-    //   favicon: paths.src + '/images/favicon.png',
     //   template: paths.src + '/template.html', // template file
     //   filename: 'index.html', // output file
     // }),
