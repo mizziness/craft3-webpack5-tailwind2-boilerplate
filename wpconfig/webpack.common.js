@@ -1,37 +1,52 @@
 const paths = require('./paths')
+const webpack = require('webpack')
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
-// Uncomment to enable Webpackbar
-// const WebpackBar = require('webpackbar');
+// const WebpackBar = require('webpackbar')
+// const jQuery = require("jquery")
 
 module.exports = {
   entry: {
-    app: [paths.src + '/app.js']
+    app: [paths.src + '/app.js'],
   },
 
   output: {
     path: paths.build,
     filename: '[name].bundle.js',
     publicPath: '/',
+    library: 'new_library', // Name your library if you like
   },
 
+  // externals: {
+  //   jquery: 'jQuery'
+  // }
+
   plugins: [
+    // new WebpackBar({ fancy: true, profile: true }),
+
     // Clean up after ourselves
     new CleanWebpackPlugin(),
 
     // Generates a manifest.json file for use in Craft CMS with Twigpack
-    new WebpackManifestPlugin(),
+    new WebpackManifestPlugin({
+      cleanStaleWebpackAssets: true,
+      protectWebpackAssets: false,
+      cleanOnceBeforeBuildPatterns: [ paths.build ]
+    }),
 
-    // Uncomment to enable Webpackbar
-    // new WebpackBar(),
+    // new webpack.ProvidePlugin({
+    //   $: "jquery",
+    //   jQuery: "jquery"
+    // }),
 
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
     // Uncomment this if you want to generate an html template file
+    // Use this if you really want http://localhost:8080/ to serve *something*. 
+    //
     // new HtmlWebpackPlugin({
     //   title: 'Webpack 5 Boilerplate',
     //   favicon: paths.src + '/images/favicon.png',

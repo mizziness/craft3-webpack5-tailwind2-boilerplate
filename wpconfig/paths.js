@@ -11,4 +11,6 @@ module.exports = {
   public: path.resolve(__dirname, '../web'),
 
   templates: path.resolve(__dirname, '../templates'),
+
+  storage: path.resolve(__dirname, '../storage/webpack'),
 }
