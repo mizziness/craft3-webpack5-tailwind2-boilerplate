@@ -28,14 +28,14 @@ module.exports = {
     // new WebpackBar({ fancy: true, profile: true }),
 
     // Clean up after ourselves
-    new CleanWebpackPlugin(),
-
-    // Generates a manifest.json file for use in Craft CMS with Twigpack
-    new WebpackManifestPlugin({
+    new CleanWebpackPlugin({
       cleanStaleWebpackAssets: true,
       protectWebpackAssets: false,
       cleanOnceBeforeBuildPatterns: [ paths.build ]
     }),
+
+    // Generates a manifest.json file for use in Craft CMS with Twigpack
+    new WebpackManifestPlugin(),
 
     // new webpack.ProvidePlugin({
     //   $: "jquery",
