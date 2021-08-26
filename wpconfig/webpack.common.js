@@ -1,90 +1,108 @@
-const paths = require('./paths')
-const webpack = require('webpack')
+const paths = require("./paths")
+const webpack = require("webpack")
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const WebpackBar = require('webpackbar')
-// const jQuery = require("jquery")
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin")
+const WebpackBar = require("webpackbar")
 
 module.exports = {
+  // Entry points for your application will create bundles named the same way
   entry: {
-    app: [paths.src + '/app.js'],
+    app: [paths.src + "/app.js"],
   },
 
   output: {
     path: paths.build,
-    filename: '[name].bundle.js',
-    publicPath: '/',
-    library: 'new_library', // Name your library if you like
+    publicPath: "/",
+    // Optional: Customize your library name
+    library: "craft3", 
+    // Cleaning is now included in webpack so we don"t need CleanWebpackPlugin any longer
+    clean: true, 
   },
 
-  // externals: {
-  //   jquery: 'jQuery'
-  // }
+  resolve: {
+    fallback: { "fs": false },
+    modules: [ "node_modules" ]
+  },
 
   plugins: [
-    // new WebpackBar({ fancy: true, profile: true }),
+    new WebpackBar({ fancy: true, profile: true }),
 
-    // Clean up after ourselves
-    new CleanWebpackPlugin({
-      cleanStaleWebpackAssets: true,
-      protectWebpackAssets: false,
-      cleanOnceBeforeBuildPatterns: [ paths.build ]
+    // Provide jQuery in a custom plugin
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
     }),
 
     // Generates a manifest.json file for use in Craft CMS with Twigpack
     new WebpackManifestPlugin(),
-
-    // new webpack.ProvidePlugin({
-    //   $: "jquery",
-    //   jQuery: "jquery"
-    // }),
-
-    // Generates an HTML file from a template
-    // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
-    // Uncomment this if you want to generate an html template file
-    // Use this if you really want http://localhost:8080/ to serve *something*.
-    //
-    // new HtmlWebpackPlugin({
-    //   title: 'Webpack 5 Boilerplate',
-    //   template: paths.src + '/template.html', // template file
-    //   filename: 'index.html', // output file
-    // }),
   ],
 
   // Determine how modules within the project are treated
   module: {
     rules: [
+      // Create a separate jQuery chunk
+      {
+        test: require.resolve("jquery"),
+        loader: "expose-loader",
+        options: {
+          exposes: [
+            {
+              globalName: "$",
+              moduleLocalName: "jquery",
+              override: true,
+            },
+            {
+              globalName: "jQuery",
+              moduleLocalName: "jquery",
+              override: true,
+            },
+          ]
+        },
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ["babel-loader"]
+      },
+      {
+        test: /\.svg(\?.*)?$/,
+        use: [
+          "svg-url-loader",
+          "svg-transform-loader"
+        ]
       },
       {
         test: /\.(scss|css)$/,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
-              sourceMap: true,
-              importLoaders: 1,
-              url: false // Set to true to allow css-loader to resolve urls
+              importLoaders: 2,
             }
           },
-          { loader: 'postcss-loader', options: {sourceMap: true} },
-          { loader: 'sass-loader', options: {sourceMap: true} },
+          { loader: "postcss-loader" },
+          { loader: "svg-transform-loader/encode-query" },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+              implementation: require("sass"),
+            }
+          },
         ],
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource'
+        type: "asset/inline",
+        loader: "file-loader",
+        options: {
+          outputPath: "images",
+        },
       },
       {
-        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-        type: 'asset/inline'
+        test: /\.(woff(2)?|eot|ttf|otf)$/,
+        type: "asset/inline"
       },
     ],
   },

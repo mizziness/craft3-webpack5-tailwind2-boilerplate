@@ -1,2 +1,7 @@
 // Import your CSS/SCSS files here:
-// @import "foo.scss"
+@import "craft-index.scss";
+
+body {
+  // You should see this border on the page!
+  border: 10px solid theme('colors.green.500');
+}

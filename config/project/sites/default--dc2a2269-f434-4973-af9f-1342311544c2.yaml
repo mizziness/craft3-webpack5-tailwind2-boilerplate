@@ -1,0 +1,9 @@
+baseUrl: '@web'
+enabled: true
+handle: default
+hasUrls: true
+language: en-US
+name: 'Craft 3'
+primary: true
+siteGroup: 70c4632f-a33d-4760-8dcc-522db883edc3 # Craft 3
+sortOrder: 1
