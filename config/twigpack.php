@@ -14,7 +14,7 @@ return [
         'cacheKeySuffix' => '',
        // Manifest file names
         'manifest' => [
-            'legacy' => 'manifest.json',
+            'legacy' => 'manifest-legacy.json',
             'modern' => 'manifest.json',
         ],
         // Public server config
@@ -24,8 +24,8 @@ return [
         ],
         // webpack-dev-server config
         'devServer' => [
-            'manifestPath' => 'http://localhost:8080/',
-            'publicPath' => 'http://localhost:8080/',
+            'manifestPath' => 'https://localhost:8080/',
+            'publicPath' => 'https://localhost:8080/',
         ],
         // Bundle to use with the webpack-dev-server
         'devServerBuildType' => 'modern',
@@ -35,9 +35,8 @@ return [
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src#Unsafe_inline_script
         'cspNonce' => '',
         // Local files config
-        // Local files config
         'localFiles' => [
-            'basePath' => '@webroot/',
+            'basePath' => '@webroot/dist/',
         ],
     ],
     // Live (production) environment
@@ -50,5 +49,6 @@ return [
     'dev' => [
         // If `devMode` is on, use webpack-dev-server to all for HMR (hot module reloading)
         'useDevServer' => true,
+        'useAbsoluteUrl' => true,
     ],
 ];

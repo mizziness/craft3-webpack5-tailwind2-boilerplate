@@ -1,0 +1,31 @@
+dateModified: 1629948312
+email:
+  fromEmail: admin@admin.com
+  fromName: 'Craft 3'
+  transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    5c94fcc8-5c73-41e4-b333-ff73d8c0c418: Common # Common
+    70c4632f-a33d-4760-8dcc-522db883edc3: 'Craft 3' # Craft 3
+    dc2a2269-f434-4973-af9f-1342311544c2: 'Craft 3' # Craft 3
+plugins:
+  scss:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  twigpack:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: solo
+  live: true
+  name: 'Craft 3'
+  schemaVersion: 3.7.7
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

@@ -4,16 +4,21 @@
 module.exports = {
   prefix: 'tw-',
   important: true,
+  mode: 'jit',
   purge: {
     mode: 'all',
-    enabled: true, // Turn off to not purge newly-added classes
+    enabled: true,
     content: [
       './src/**/*.js',
       './templates/**/*.twig',
       './templates/**/*.html'
     ],
+    options: {
+      keyframes: true,
+      fontFace: true,
+    }
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media', // See https://tailwindcss.com/docs/dark-mode
   theme: {
     extend: {},
   },

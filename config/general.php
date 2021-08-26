@@ -12,9 +12,15 @@ use craft\helpers\App;
 
 return [
     // Global settings
+    'aliases' => [
+        '@basePath' => getenv('CRAFTENV_BASE_PATH'),
+        '@baseUrl' => getenv('CRAFTENV_BASE_URL'),
+        '@defaultSiteUrl' => getenv('DEFAULT_SITE_URL'),
+        '@baseUploadsUrl' => getenv('BASE_UPLOADS_URL'),
+    ],
     '*' => [
         // Default Week Start Day (0 = Sunday, 1 = Monday...)
-        'defaultWeekStartDay' => 1,
+        'defaultWeekStartDay' => 0,
 
         // Whether generated URLs should omit "index.php"
         'omitScriptNameInUrls' => true,
@@ -24,6 +30,11 @@ return [
 
         // The secure key Craft will use for hashing and encrypting data
         'securityKey' => App::env('SECURITY_KEY'),
+
+        // Personal Preferences
+        'useProjectConfigFile' => true,
+        'sendPoweredByHeader' => false,
+        'enableCsrfProtection' => true,
     ],
 
     // Dev environment settings
@@ -33,6 +44,9 @@ return [
 
         // Prevent crawlers from indexing pages and following links
         'disallowRobots' => true,
+
+        // Disable {% cache %} tags
+        'enableTemplateCaching' => false,
     ],
 
     // Staging environment settings
