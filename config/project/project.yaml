@@ -1,4 +1,4 @@
-dateModified: 1629948312
+dateModified: 1635940390
 email:
   fromEmail: admin@admin.com
   fromName: 'Craft 3'
@@ -21,7 +21,7 @@ system:
   edition: solo
   live: true
   name: 'Craft 3'
-  schemaVersion: 3.7.7
+  schemaVersion: 3.7.8
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false

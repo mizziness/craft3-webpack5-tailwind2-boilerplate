@@ -1,6 +1,5 @@
 const paths = require("./paths")
 const webpack = require("webpack")
-
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin")
 const WebpackBar = require("webpackbar")
 
@@ -13,10 +12,10 @@ module.exports = {
   output: {
     path: paths.build,
     publicPath: "/",
-    // Optional: Customize your library name
-    library: "craft3", 
-    // Cleaning is now included in webpack so we don"t need CleanWebpackPlugin any longer
-    clean: true, 
+    filename: 'js/[name].bundle.js',
+    chunkFilename: 'js/[name].bundle.js',
+    library: "craft3",
+    clean: true,
   },
 
   resolve: {
