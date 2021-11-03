@@ -3,7 +3,6 @@ const webpack = require("webpack")
 const common = require("./webpack.common.js")
 const { merge } = require("webpack-merge")
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin")
-// const HtmlWebpackPlugin = require("html-webpack-plugin")
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 
 module.exports = merge(common, {
@@ -17,8 +16,7 @@ module.exports = merge(common, {
     level: "verbose",
   },
   output: {
-    filename: "js/[name].js",
-    chunkFilename: "js/[name].js",
+    publicPath: "https://localhost:8080/",
   },
 
   // Spin up a server for quick development
@@ -49,6 +47,11 @@ module.exports = merge(common, {
       },
       {
         directory: paths.src,
+        serveIndex: false,
+        watch: true,
+      },
+      {
+        directory: paths.webpack,
         serveIndex: false,
         watch: true,
       }
